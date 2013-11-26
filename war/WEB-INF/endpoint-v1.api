@@ -46,6 +46,21 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
+    "endpoint.greetings.authed" : {
+      "path" : "greeting/authed",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.narp.endpoints.Greetings.authedGreeting",
+      "request" : {
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "endpoint.greetings.getGreeting" : {
       "path" : "hellogreeting/{id}",
       "httpMethod" : "GET",
@@ -85,6 +100,11 @@
         "request" : {
           "$ref" : "HelloGreeting"
         },
+        "response" : {
+          "$ref" : "HelloGreeting"
+        }
+      },
+      "com.narp.endpoints.Greetings.authedGreeting" : {
         "response" : {
           "$ref" : "HelloGreeting"
         }
