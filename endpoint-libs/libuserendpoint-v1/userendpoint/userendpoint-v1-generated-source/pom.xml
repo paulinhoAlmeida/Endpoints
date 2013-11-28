@@ -7,9 +7,9 @@
   </parent>
 
   <groupId>com.google.apis</groupId>
-  <artifactId>google-api-services-endpoint</artifactId>
-  <version>v1-rev20131126073630-1.16.0-rc</version>
-  <name>endpoint v1 (revision 20131126073630)</name>
+  <artifactId>google-api-services-userendpoint</artifactId>
+  <version>v1-rev20131128171324-1.16.0-rc</version>
+  <name>userendpoint v1 (revision 20131128171324)</name>
   <packaging>jar</packaging>
 
   <inceptionYear>2011</inceptionYear>
@@ -53,8 +53,8 @@
         <artifactId>maven-javadoc-plugin</artifactId>
         <version>2.7</version>
         <configuration>
-          <doctitle>endpoint ${project.version}</doctitle>
-          <windowtitle>endpoint ${project.version}</windowtitle>
+          <doctitle>userendpoint ${project.version}</doctitle>
+          <windowtitle>userendpoint ${project.version}</windowtitle>
           <links>
             <link>http://docs.oracle.com/javase/7/docs/api</link>
           

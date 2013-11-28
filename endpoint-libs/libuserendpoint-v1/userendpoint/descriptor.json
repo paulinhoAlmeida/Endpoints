@@ -1,27 +1,28 @@
 {
   "files": [
     {
-      "downloadUrl": "/downloads/endpoint/v1/20131126073630/java/1.16.0-rc/narpbackend_appspot_com-endpoint-v1-20131126073630-java-1.16.0-rc-sources.jar", 
-      "path": "narpbackend_appspot_com-endpoint-v1-20131126073630-java-1.16.0-rc-sources.jar", 
+      "downloadUrl": "/downloads/userendpoint/v1/20131128171324/java/1.16.0-rc/narp.com-userendpoint-v1-20131128171324-java-1.16.0-rc-sources.jar", 
+      "path": "narp.com-userendpoint-v1-20131128171324-java-1.16.0-rc-sources.jar", 
       "type": "source", 
-      "timestamp": "2013-11-26 07:36"
+      "timestamp": "2013-11-28 17:13"
     }, 
     {
-      "path": "narpbackend_appspot_com-endpoint-v1-20131126073630-java-1.16.0-rc.jar.properties", 
+      "path": "narp.com-userendpoint-v1-20131128171324-java-1.16.0-rc.jar.properties", 
       "type": "android.properties"
     }
   ], 
   "proguard-config": "proguard-google-api-client.txt", 
-  "ownerDomain": "narpbackend.appspot.com", 
-  "moduleName": "com.appspot.narpbackend", 
-  "name": "endpoint", 
+  "ownerDomain": "narp.com", 
+  "moduleName": "com.narp.endpoints", 
+  "name": "userendpoint", 
   "language": "java", 
-  "title": "endpoint", 
+  "title": "userendpoint", 
+  "version": "v1", 
   "kind": "discovery#directoryItem", 
-  "modulePath": "com/appspot/narpbackend", 
+  "modulePath": "com/narp/endpoints", 
   "maven": {
-    "group_id": "com.appspot.narpbackend", 
-    "artifact_id": "endpoint", 
+    "group_id": "com.narp", 
+    "artifact_id": "endpoints-userendpoint", 
     "version": "v1-1.16.0-rc-SNAPSHOT"
   }, 
   "dependencies": [
@@ -697,9 +698,9 @@
       ]
     }
   ], 
-  "ownerName": "narpbackend_appspot_com", 
-  "version": "v1", 
+  "ownerName": "narp.com", 
+  "packagePath": "endpoints", 
   "language_version": "1.16.0-rc", 
-  "id": "endpoint:v1", 
-  "revision": 20131126073630
+  "id": "userendpoint:v1", 
+  "revision": 20131128171324
 }

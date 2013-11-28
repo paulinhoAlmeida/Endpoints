@@ -19,8 +19,8 @@ import javax.persistence.EntityNotFoundException;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-@Api(name = "beerendpoint", namespace = @ApiNamespace(ownerDomain = "narp.com", ownerName = "narp.com", packagePath = "endpoints"))
-public class BeerEndpoint {
+@Api(name = "userendpoint", namespace = @ApiNamespace(ownerDomain = "narp.com", ownerName = "narp.com", packagePath = "endpoints"))
+public class UserEndpoint {
 
 	/**
 	 * This method lists all the entities inserted in datastore.
@@ -30,18 +30,18 @@ public class BeerEndpoint {
 	 * persisted and a cursor to the next page.
 	 */
 	@SuppressWarnings({ "unchecked", "unused" })
-	@ApiMethod(name = "listBeer")
-	public CollectionResponse<Beer> listBeer(
+	@ApiMethod(name = "listUser")
+	public CollectionResponse<User> listUser(
 			@Nullable @Named("cursor") String cursorString,
 			@Nullable @Named("limit") Integer limit) {
 
 		PersistenceManager mgr = null;
 		Cursor cursor = null;
-		List<Beer> execute = null;
+		List<User> execute = null;
 
 		try {
 			mgr = getPersistenceManager();
-			Query query = mgr.newQuery(Beer.class);
+			Query query = mgr.newQuery(User.class);
 			if (cursorString != null && cursorString != "") {
 				cursor = Cursor.fromWebSafeString(cursorString);
 				HashMap<String, Object> extensionMap = new HashMap<String, Object>();
@@ -53,20 +53,20 @@ public class BeerEndpoint {
 				query.setRange(0, limit);
 			}
 
-			execute = (List<Beer>) query.execute();
+			execute = (List<User>) query.execute();
 			cursor = JDOCursorHelper.getCursor(execute);
 			if (cursor != null)
 				cursorString = cursor.toWebSafeString();
 
 			// Tight loop for fetching all entities from datastore and accomodate
 			// for lazy fetch.
-			for (Beer obj : execute)
+			for (User obj : execute)
 				;
 		} finally {
 			mgr.close();
 		}
 
-		return CollectionResponse.<Beer> builder().setItems(execute)
+		return CollectionResponse.<User> builder().setItems(execute)
 				.setNextPageToken(cursorString).build();
 	}
 
@@ -76,16 +76,16 @@ public class BeerEndpoint {
 	 * @param id the primary key of the java bean.
 	 * @return The entity with primary key id.
 	 */
-	@ApiMethod(name = "getBeer")
-	public Beer getBeer(@Named("id") Long id) {
+	@ApiMethod(name = "getUser")
+	public User getUser(@Named("id") String id) {
 		PersistenceManager mgr = getPersistenceManager();
-		Beer beer = null;
+		User user = null;
 		try {
-			beer = mgr.getObjectById(Beer.class, id);
+			user = mgr.getObjectById(User.class, id);
 		} finally {
 			mgr.close();
 		}
-		return beer;
+		return user;
 	}
 
 	/**
@@ -93,21 +93,21 @@ public class BeerEndpoint {
 	 * exists in the datastore, an exception is thrown.
 	 * It uses HTTP POST method.
 	 *
-	 * @param beer the entity to be inserted.
+	 * @param user the entity to be inserted.
 	 * @return The inserted entity.
 	 */
-	@ApiMethod(name = "insertBeer")
-	public Beer insertBeer(Beer beer) {
+	@ApiMethod(name = "insertUser")
+	public User insertUser(User user) {
 		PersistenceManager mgr = getPersistenceManager();
 		try {
-			if (containsBeer(beer)) {
+			if (containsUser(user)) {
 				throw new EntityExistsException("Object already exists");
 			}
-			mgr.makePersistent(beer);
+			mgr.makePersistent(user);
 		} finally {
 			mgr.close();
 		}
-		return beer;
+		return user;
 	}
 
 	/**
@@ -115,21 +115,21 @@ public class BeerEndpoint {
 	 * exist in the datastore, an exception is thrown.
 	 * It uses HTTP PUT method.
 	 *
-	 * @param beer the entity to be updated.
+	 * @param user the entity to be updated.
 	 * @return The updated entity.
 	 */
-	@ApiMethod(name = "updateBeer")
-	public Beer updateBeer(Beer beer) {
+	@ApiMethod(name = "updateUser")
+	public User updateUser(User user) {
 		PersistenceManager mgr = getPersistenceManager();
 		try {
-			if (!containsBeer(beer)) {
+			if (!containsUser(user)) {
 				throw new EntityNotFoundException("Object does not exist");
 			}
-			mgr.makePersistent(beer);
+			mgr.makePersistent(user);
 		} finally {
 			mgr.close();
 		}
-		return beer;
+		return user;
 	}
 
 	/**
@@ -138,22 +138,22 @@ public class BeerEndpoint {
 	 *
 	 * @param id the primary key of the entity to be deleted.
 	 */
-	@ApiMethod(name = "removeBeer")
-	public void removeBeer(@Named("id") Long id) {
+	@ApiMethod(name = "removeUser")
+	public void removeUser(@Named("id") String id) {
 		PersistenceManager mgr = getPersistenceManager();
 		try {
-			Beer beer = mgr.getObjectById(Beer.class, id);
-			mgr.deletePersistent(beer);
+			User user = mgr.getObjectById(User.class, id);
+			mgr.deletePersistent(user);
 		} finally {
 			mgr.close();
 		}
 	}
 
-	private boolean containsBeer(Beer beer) {
+	private boolean containsUser(User user) {
 		PersistenceManager mgr = getPersistenceManager();
 		boolean contains = true;
 		try {
-			mgr.getObjectById(Beer.class, beer.getId());
+			mgr.getObjectById(User.class, user.getUser());
 		} catch (javax.jdo.JDOObjectNotFoundException ex) {
 			contains = false;
 		} finally {
