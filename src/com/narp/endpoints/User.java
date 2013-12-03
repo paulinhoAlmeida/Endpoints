@@ -1,9 +1,5 @@
 package com.narp.endpoints;
 
-import com.google.api.server.spi.config.ApiMethod;
-import com.google.appengine.api.datastore.KeyFactory;
-
-import javax.jdo.PersistenceManager;
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
